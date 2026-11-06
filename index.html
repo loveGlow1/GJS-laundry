@@ -123,6 +123,38 @@
       color: #00543e; background: rgba(229,250,239,.8); display: grid; place-items: center;
     }
     .play svg { width: 18px; height: 18px; }
+    /* Washing machine illustration. Medium screens: above the booking card.
+       Wide screens: in the open space between the headline and the card. */
+    .hero-machine {
+      position: absolute; z-index: 2; pointer-events: none;
+      width: 160px; top: 132px;
+      right: calc(clamp(28px, 4.2vw, 72px) + (min(380px, 29vw) - 160px) / 2);
+      filter: drop-shadow(0 24px 40px rgba(0,77,59,.18));
+    }
+    @media (min-width: 1380px) {
+      .hero-machine {
+        width: min(300px, calc(100vw - 2 * clamp(28px, 4.2vw, 72px) - 1030px));
+        right: calc(clamp(28px, 4.2vw, 72px) + 380px + 36px);
+        top: 200px;
+      }
+    }
+    .hero-machine svg { display: block; width: 100%; height: auto; }
+    .hero-machine .drum { transform-origin: 100px 140px; animation: drum-spin 7s linear infinite; }
+    .hero-machine .bubble { animation: bubble-rise 4s ease-in infinite; opacity: 0; }
+    .hero-machine .bubble:nth-child(2) { animation-delay: 1.3s; }
+    .hero-machine .bubble:nth-child(3) { animation-delay: 2.6s; }
+    .hero-machine .bubble:nth-child(4) { animation-delay: .7s; }
+    .hero-machine .bubble:nth-child(5) { animation-delay: 3.2s; }
+    @keyframes drum-spin { to { transform: rotate(360deg); } }
+    @keyframes bubble-rise {
+      0% { opacity: 0; transform: translateY(14px); }
+      20% { opacity: .9; }
+      100% { opacity: 0; transform: translateY(-46px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-machine .drum, .hero-machine .bubble { animation: none; }
+      .hero-machine .bubble { opacity: .8; }
+    }
     .booking-card {
       position: absolute; z-index: 3; right: clamp(28px, 4.2vw, 72px); bottom: 37px;
       width: min(380px, 29vw); padding: 24px 26px 19px; background: rgba(255,255,255,.97);
@@ -198,6 +230,7 @@
       .hero { min-height: 700px; }
       .hero-content { width: 58%; }
       .booking-card { width: 340px; right: 28px; }
+      .hero-machine { right: 118px; top: 138px; }
       .services-strip { grid-template-columns: repeat(4, 1fr); }
       .services-intro { grid-column: 1 / -1; }
       .services-intro p { max-width: none; }
@@ -239,7 +272,8 @@
       .hero-buttons .btn { padding: 15px 19px; font-size: 13px; }
       .watch-link { font-size: 12px; }
       .play { width: 45px; height: 45px; }
-      .booking-card { position: relative; right: auto; bottom: auto; width: 100%; margin: 270px 0 0; border-radius: 22px; }
+      .hero-machine { position: relative; top: auto; right: auto; width: 230px; margin: 34px auto -46px; }
+      .booking-card { position: relative; right: auto; bottom: auto; width: 100%; margin: 0; border-radius: 22px; }
       .services-strip { margin: 0 14px 20px; padding: 18px; grid-template-columns: 1fr 1fr; gap: 10px; border-radius: 22px; }
       .services-intro { grid-column: 1 / -1; padding: 0 0 8px; }
       .services-intro h2 { font-size: 24px; }
@@ -322,6 +356,48 @@
           <a class="btn btn-deep" href="#booking">▦ &nbsp; Book a Pickup <span>→</span></a>
           <a class="watch-link" href="#how-it-works"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 12 7-12 7z"/></svg></span>Watch Our Service</a>
         </div>
+      </div>
+
+      <div class="hero-machine" role="img" aria-label="Washing machine with fresh laundry spinning inside">
+        <svg viewBox="0 0 200 250" fill="none">
+          <defs>
+            <linearGradient id="wmBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef7f3"/></linearGradient>
+            <radialGradient id="wmGlass" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#f2fffa"/><stop offset="1" stop-color="#bfe9d6"/></radialGradient>
+            <clipPath id="wmDrum"><circle cx="100" cy="140" r="50"/></clipPath>
+          </defs>
+          <g>
+            <circle class="bubble" cx="44" cy="40" r="7" fill="#fff" stroke="#9fdcc0" stroke-width="2"/>
+            <circle class="bubble" cx="160" cy="34" r="9" fill="#fff" stroke="#9fdcc0" stroke-width="2"/>
+            <circle class="bubble" cx="128" cy="22" r="5" fill="#fff" stroke="#9fdcc0" stroke-width="2"/>
+            <circle class="bubble" cx="70" cy="18" r="6" fill="#fff" stroke="#9fdcc0" stroke-width="2"/>
+            <circle class="bubble" cx="100" cy="30" r="4" fill="#fff" stroke="#9fdcc0" stroke-width="2"/>
+          </g>
+          <rect x="14" y="44" width="172" height="196" rx="24" fill="url(#wmBody)" stroke="#cfe6dc" stroke-width="3"/>
+          <path d="M14 68a24 24 0 0 1 24-24h124a24 24 0 0 1 24 24v6H14z" fill="#e8f7f0"/>
+          <path d="M14 74h172" stroke="#cfe6dc" stroke-width="3"/>
+          <rect x="30" y="54" width="54" height="11" rx="5.5" fill="#004d3b"/>
+          <rect x="35" y="57.5" width="22" height="4" rx="2" fill="#46d39b"/>
+          <circle cx="104" cy="59.5" r="4" fill="#00a56b"/>
+          <circle cx="118" cy="59.5" r="4" fill="#bfe9d6"/>
+          <circle cx="162" cy="59.5" r="10" fill="#fff" stroke="#004d3b" stroke-width="3"/>
+          <path d="M162 52v7" stroke="#004d3b" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="100" cy="140" r="66" fill="#fff" stroke="#dcebe5" stroke-width="3"/>
+          <circle cx="100" cy="140" r="58" fill="#e8f7f0" stroke="#004d3b" stroke-width="8"/>
+          <circle cx="100" cy="140" r="50" fill="url(#wmGlass)"/>
+          <g clip-path="url(#wmDrum)">
+            <path d="M44 150c10-6 20 6 30 0s20 6 30 0 20 6 30 0 20 6 30 0v50H44z" fill="#7fd8b0" opacity=".55"/>
+            <g class="drum">
+              <path d="M74 112c6-6 18-6 22 2 3 6-4 12-12 12s-14-8-10-14z" fill="#00a56b"/>
+              <path d="M112 118c8-2 16 4 14 12-2 7-12 8-17 3-4-5-3-13 3-15z" fill="#ffffff" stroke="#9fdcc0" stroke-width="2"/>
+              <path d="M88 156c8-4 20 0 20 9 0 7-10 10-17 7s-10-12-3-16z" fill="#46d39b"/>
+              <path d="M120 150c5 0 10 5 8 10s-9 6-12 2-1-12 4-12z" fill="#004d3b" opacity=".75"/>
+              <circle cx="72" cy="146" r="5" fill="#fff" opacity=".9"/>
+            </g>
+          </g>
+          <path d="M70 108a42 42 0 0 1 30-14" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+          <rect x="38" y="226" width="22" height="8" rx="3" fill="#cfe6dc"/>
+          <rect x="140" y="226" width="22" height="8" rx="3" fill="#cfe6dc"/>
+        </svg>
       </div>
 
       <aside class="booking-card" id="booking">
