@@ -1,205 +1,233 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gjs Dry Cleaning & Laundry Service | Lifecamp, Abuja</title>
+    <title>GJS Dry Cleaning & Laundry | Lifecamp, Abuja</title>
+    <meta name="description" content="GJS Dry Cleaning & Laundry, Golf Town Corner Shop, Kingstown Estate, Lifecamp, Abuja. Dry cleaning, wash & fold, steam pressing and doorstep pickup. Call 0913 327 5551. Open 8:00 AM – 6:30 PM.">
+    <meta name="theme-color" content="#0B1F3A">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        graphite: {
-                            900: '#0B0F17',
-                            800: '#111827',
-                            700: '#1F2937',
-                            600: '#374151',
+                        navy: {
+                            950: '#06142A',
+                            900: '#0B1F3A',
+                            800: '#12294A',
+                            700: '#1C3A63',
                         },
-                        violetAccent: {
-                            400: '#A78BFA',
-                            500: '#8B5CF6',
-                            600: '#7C3AED',
-                            700: '#6D28D9',
-                            glow: '#8B5CF633',
-                        }
+                        brand: {
+                            50:  '#ECFEFF',
+                            100: '#CFFAFE',
+                            200: '#A5F3FC',
+                            400: '#22C3D6',
+                            500: '#06AFC4',
+                            600: '#0891A6',
+                            700: '#0E7487',
+                        },
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        soft: '0 1px 2px rgba(11,31,58,0.04), 0 8px 24px -8px rgba(11,31,58,0.10)',
+                        lift: '0 2px 4px rgba(11,31,58,0.04), 0 20px 40px -12px rgba(11,31,58,0.18)',
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
+
+    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0B0F17;
-            color: #F3F4F6;
+        body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #F7F9FC; color: #0B1F3A; -webkit-font-smoothing: antialiased; }
+        .card { background: #fff; border: 1px solid #E6EBF2; border-radius: 1.25rem; box-shadow: 0 1px 2px rgba(11,31,58,0.04), 0 8px 24px -8px rgba(11,31,58,0.10); }
+        .card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+        .card-hover:hover { transform: translateY(-4px); border-color: #A5F3FC; box-shadow: 0 2px 4px rgba(11,31,58,0.04), 0 20px 40px -12px rgba(11,31,58,0.18); }
+        .hero-bg {
+            background:
+                radial-gradient(60rem 30rem at 85% -10%, rgba(6,175,196,0.28), transparent 60%),
+                radial-gradient(40rem 25rem at -10% 110%, rgba(34,195,214,0.14), transparent 60%),
+                #0B1F3A;
         }
-        .glow-purple {
-            box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.3);
+        .grid-pattern {
+            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
         }
-        .glow-purple-sm {
-            box-shadow: 0 0 15px -3px rgba(139, 92, 246, 0.25);
-        }
-        .card-elevation {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .card-elevation:hover {
-            border-color: rgba(139, 92, 246, 0.4);
-        }
+        .field { width: 100%; padding: .85rem 1rem; border-radius: .9rem; background: #fff; border: 1px solid #D9E1EC; font-size: .9rem; color: #0B1F3A; transition: border-color .2s, box-shadow .2s; }
+        .field:focus { outline: none; border-color: #06AFC4; box-shadow: 0 0 0 4px rgba(6,175,196,0.15); }
+        .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #0891A6; }
+        .eyebrow::before { content: ''; width: 1.5rem; height: 2px; background: currentColor; border-radius: 2px; }
+        .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-violetAccent-500 selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-brand-200 selection:text-navy-900">
+
+    <!-- Top Contact Bar -->
+    <div class="bg-navy-950 text-slate-300 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-5 overflow-hidden">
+                <a href="tel:+2349133275551" class="flex items-center gap-2 hover:text-white transition-colors whitespace-nowrap">
+                    <i class="fa-solid fa-phone text-brand-400"></i> 0913 327 5551
+                </a>
+                <a href="mailto:goodnessomone2@gmail.com" class="hidden sm:flex items-center gap-2 hover:text-white transition-colors whitespace-nowrap">
+                    <i class="fa-solid fa-envelope text-brand-400"></i> goodnessomone2@gmail.com
+                </a>
+            </div>
+            <div class="flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-regular fa-clock text-brand-400"></i>
+                <span class="hidden md:inline">Mon – Sat · 8:00 AM – 6:30 PM</span>
+                <span class="md:hidden">8:00 AM – 6:30 PM</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 card-elevation border-b border-gray-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violetAccent-600 to-violetAccent-400 flex items-center justify-center text-white font-bold text-xl shadow-lg glow-purple-sm transition-transform duration-300 group-hover:scale-105">
+    <header id="siteHeader" class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200/80 transition-shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group" aria-label="GJS Laundry home">
+                <div class="w-11 h-11 rounded-xl bg-navy-900 flex items-center justify-center text-white font-extrabold text-sm tracking-wide shadow-soft transition-transform duration-300 group-hover:scale-105">
                     GJS
                 </div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-tight text-white block leading-tight">GJS <span class="text-violetAccent-400">Laundry</span></span>
-                    <span class="text-[10px] text-gray-400 tracking-wider uppercase block">Dry Cleaning & Care</span>
+                <div class="leading-tight">
+                    <span class="text-lg font-extrabold tracking-tight text-navy-900 block">GJS <span class="text-brand-600">Laundry</span></span>
+                    <span class="text-[10px] font-semibold text-slate-500 tracking-[0.18em] uppercase block">Dry Cleaning & Care</span>
                 </div>
             </a>
 
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-                <a href="#services" class="hover:text-violetAccent-400 transition-colors">Services</a>
-                <a href="#calculator" class="hover:text-violetAccent-400 transition-colors">Price Estimator</a>
-                <a href="#how-it-works" class="hover:text-violetAccent-400 transition-colors">How It Works</a>
-                <a href="#location" class="hover:text-violetAccent-400 transition-colors">Location</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#services" class="hover:text-brand-600 transition-colors">Services</a>
+                <a href="#calculator" class="hover:text-brand-600 transition-colors">Pricing</a>
+                <a href="#how-it-works" class="hover:text-brand-600 transition-colors">How It Works</a>
+                <a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a>
             </nav>
 
-            <!-- CTA Button & Mobile Menu Toggle -->
-            <div class="flex items-center gap-4">
-                <a href="#request-pickup" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-violetAccent-600 hover:bg-violetAccent-500 transition-all duration-200 shadow-md hover:shadow-violetAccent-600/40 glow-purple-sm">
+            <div class="flex items-center gap-3">
+                <a href="tel:+2349133275551" class="hidden lg:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-navy-900 border border-slate-200 hover:border-brand-400 hover:text-brand-700 transition-colors">
+                    <i class="fa-solid fa-phone text-xs"></i> Call Us
+                </a>
+                <a href="#request-pickup" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-navy-900 hover:bg-navy-700 transition-colors shadow-soft">
                     Book Pickup
                 </a>
-                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <button id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" class="md:hidden w-10 h-10 rounded-xl text-navy-900 hover:bg-slate-100 flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-gray-800 bg-graphite-900 px-4 pt-3 pb-6 space-y-3">
-            <a href="#services" class="block py-2 text-gray-300 hover:text-violetAccent-400">Services</a>
-            <a href="#calculator" class="block py-2 text-gray-300 hover:text-violetAccent-400">Price Estimator</a>
-            <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-violetAccent-400">How It Works</a>
-            <a href="#location" class="block py-2 text-gray-300 hover:text-violetAccent-400">Location Details</a>
-            <a href="#request-pickup" class="block w-full text-center mt-3 py-3 rounded-xl font-semibold text-white bg-violetAccent-600">
-                Book Pickup
-            </a>
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-5">
+            <a href="#services" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Services</a>
+            <a href="#calculator" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Pricing</a>
+            <a href="#how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
+            <a href="#contact" class="block py-3 font-semibold text-slate-700">Contact</a>
+            <div class="grid grid-cols-2 gap-3 mt-3">
+                <a href="tel:+2349133275551" class="text-center py-3 rounded-xl font-semibold text-navy-900 border border-slate-200"><i class="fa-solid fa-phone mr-1 text-xs"></i> Call</a>
+                <a href="#request-pickup" class="text-center py-3 rounded-xl font-semibold text-white bg-navy-900">Book Pickup</a>
+            </div>
         </div>
     </header>
 
+    <main class="flex-1">
+
     <!-- Hero Section -->
-    <section class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
-        <!-- Background Ambient Glow -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violetAccent-600/20 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- Hero Text -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violetAccent-500/30 bg-violetAccent-500/10 text-violetAccent-400 text-xs sm:text-sm font-medium">
-                        <span class="w-2 h-2 rounded-full bg-violetAccent-400 animate-pulse"></span>
-                        Lifecamp's Premier Garment Care Hub
+    <section class="hero-bg relative overflow-hidden text-white">
+        <div class="absolute inset-0 grid-pattern pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative pt-16 pb-24 md:pt-24 md:pb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+                <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-xs sm:text-sm font-medium text-slate-200">
+                        <span id="heroStatusDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span id="heroStatusText">Lifecamp's trusted garment care</span>
                     </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        Impeccable Care for Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-violetAccent-400 via-purple-300 to-indigo-400">Everyday & Fine Wear</span>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-[3.6rem] font-extrabold tracking-tight leading-[1.08]">
+                        Fresh, crisp & cared for,<br class="hidden sm:block">
+                        <span class="text-brand-400">every single time.</span>
                     </h1>
-                    
-                    <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                        Conveniently located at Golf Town Corner Shop, Kingstown Estate. We deliver eco-friendly dry cleaning, express washing, and crisp pressing right to your doorstep in Lifecamp.
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Professional dry cleaning, wash & fold and steam pressing from our shop at Golf Town Corner Shop, Kingstown Estate, with doorstep pickup across Lifecamp.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#request-pickup" class="w-full sm:w-auto px-8 py-4 rounded-xl text-white bg-violetAccent-600 hover:bg-violetAccent-500 font-bold text-base shadow-lg shadow-violetAccent-600/30 transition-all duration-200 transform hover:-translate-y-0.5 text-center">
-                            Schedule Pickup Now <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+                        <a href="#request-pickup" class="w-full sm:w-auto px-7 py-4 rounded-xl text-navy-950 bg-brand-400 hover:bg-brand-200 font-bold text-base shadow-lg shadow-brand-500/20 transition-all hover:-translate-y-0.5 text-center">
+                            Book a Pickup <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
                         </a>
-                        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl text-gray-300 hover:text-white bg-graphite-800 border border-gray-700 hover:border-violetAccent-500/50 font-semibold text-base transition-all text-center">
-                            Calculate Pricing
+                        <a href="tel:+2349133275551" class="w-full sm:w-auto px-7 py-4 rounded-xl text-white bg-white/5 hover:bg-white/10 border border-white/15 font-semibold text-base transition-all text-center">
+                            <i class="fa-solid fa-phone mr-2 text-sm text-brand-400"></i> 0913 327 5551
                         </a>
                     </div>
 
-                    <!-- Highlights Badge Bar -->
-                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-800/80 max-w-lg mx-auto lg:mx-0">
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
                         <div class="text-center lg:text-left">
-                            <p class="text-xl font-bold text-white">24-48h</p>
-                            <p class="text-xs text-gray-400">Turnaround Time</p>
+                            <p class="text-2xl font-extrabold">24–48h</p>
+                            <p class="text-xs text-slate-400 mt-1">Standard turnaround</p>
                         </div>
                         <div class="text-center lg:text-left">
-                            <p class="text-xl font-bold text-white">100%</p>
-                            <p class="text-xs text-gray-400">Fabric Safe Care</p>
+                            <p class="text-2xl font-extrabold">Same‑day</p>
+                            <p class="text-xs text-slate-400 mt-1">Express available</p>
                         </div>
                         <div class="text-center lg:text-left">
-                            <p class="text-xl font-bold text-white">Express</p>
-                            <p class="text-xs text-gray-400">Same-Day Available</p>
+                            <p class="text-2xl font-extrabold">100%</p>
+                            <p class="text-xs text-slate-400 mt-1">Fabric‑safe care</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hero Visual Card -->
+                <!-- Hero Card -->
                 <div class="lg:col-span-5">
                     <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Decorative Frame Glow -->
-                        <div class="absolute -inset-1 bg-gradient-to-r from-violetAccent-600 to-indigo-600 rounded-3xl blur opacity-30"></div>
-                        
-                        <div class="relative card-elevation rounded-2xl p-6 sm:p-8 space-y-6">
-                            <div class="flex items-center justify-between pb-4 border-b border-gray-800">
+                        <div class="relative bg-white text-navy-900 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-navy-950/40">
+                            <div class="flex items-center justify-between pb-5 border-b border-slate-100">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-xl bg-violetAccent-500/20 text-violetAccent-400 flex items-center justify-center text-xl">
+                                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl">
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-white">Express Drop-off Point</h3>
-                                        <p class="text-xs text-gray-400">Kingstown Estate, Lifecamp</p>
+                                        <h3 class="font-bold">GJS Lifecamp Outlet</h3>
+                                        <p class="text-xs text-slate-500">Kingstown Estate, Lifecamp</p>
                                     </div>
                                 </div>
-                                <span class="px-2.5 py-1 text-xs rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">Open Today</span>
+                                <span id="openBadge" class="px-2.5 py-1 text-xs rounded-full font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
                             </div>
 
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/60 border border-gray-800">
-                                    <div class="flex items-center gap-3 text-sm">
-                                        <i class="fa-solid fa-sparkles text-violetAccent-400"></i>
-                                        <span>Delicate Dry Cleaning</span>
-                                    </div>
-                                    <span class="text-xs text-gray-400">Premium Finish</span>
-                                </div>
-                                <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/60 border border-gray-800">
-                                    <div class="flex items-center gap-3 text-sm">
-                                        <i class="fa-solid fa-truck-ramp-box text-violetAccent-400"></i>
-                                        <span>Doorstep Pickup & Delivery</span>
-                                    </div>
-                                    <span class="text-xs text-gray-400">Lifecamp & Environs</span>
-                                </div>
-                                <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/60 border border-gray-800">
-                                    <div class="flex items-center gap-3 text-sm">
-                                        <i class="fa-solid fa-hot-tub-person text-violetAccent-400"></i>
-                                        <span>Steam Pressing & Ironing</span>
-                                    </div>
-                                    <span class="text-xs text-gray-400">Crease-Free</span>
-                                </div>
-                            </div>
+                            <ul class="space-y-3 py-5">
+                                <li class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="flex items-center gap-3 text-sm font-medium"><i class="fa-solid fa-wand-magic-sparkles text-brand-600 w-4"></i> Dry Cleaning</span>
+                                    <span class="text-xs text-slate-500">Premium finish</span>
+                                </li>
+                                <li class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="flex items-center gap-3 text-sm font-medium"><i class="fa-solid fa-truck-fast text-brand-600 w-4"></i> Pickup & Delivery</span>
+                                    <span class="text-xs text-slate-500">Lifecamp & environs</span>
+                                </li>
+                                <li class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                                    <span class="flex items-center gap-3 text-sm font-medium"><i class="fa-solid fa-temperature-arrow-up text-brand-600 w-4"></i> Steam Pressing</span>
+                                    <span class="text-xs text-slate-500">Crease‑free</span>
+                                </li>
+                            </ul>
 
-                            <div class="p-4 rounded-xl bg-violetAccent-500/10 border border-violetAccent-500/20 text-center">
-                                <p class="text-xs text-violetAccent-300 font-medium">📍 Drop off directly at Golf Town Corner Shop</p>
+                            <div class="grid grid-cols-2 gap-3 pt-5 border-t border-slate-100 text-sm">
+                                <div>
+                                    <p class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Hours</p>
+                                    <p class="font-semibold mt-1">8:00 AM – 6:30 PM</p>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Call</p>
+                                    <a href="tel:+2349133275551" class="font-semibold mt-1 block text-brand-700 hover:underline">0913 327 5551</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,564 +236,476 @@
         </div>
     </section>
 
-    <!-- Services Grid Section -->
-    <section id="services" class="py-20 bg-graphite-900/50 relative border-t border-gray-800/60">
+    <!-- Trust Strip -->
+    <section class="bg-white border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm font-semibold text-slate-600">
+            <div class="flex items-center gap-3"><i class="fa-solid fa-leaf text-brand-600"></i> Eco‑friendly detergents</div>
+            <div class="flex items-center gap-3"><i class="fa-solid fa-tag text-brand-600"></i> Every item tagged</div>
+            <div class="flex items-center gap-3"><i class="fa-solid fa-shield-halved text-brand-600"></i> Careful handling</div>
+            <div class="flex items-center gap-3"><i class="fa-solid fa-house text-brand-600"></i> Doorstep delivery</div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 md:py-28 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-violetAccent-400">Our Services</h2>
-                <p class="text-3xl sm:text-4xl font-extrabold text-white">Comprehensive Garment Care Solutions</p>
-                <p class="text-gray-400 text-sm sm:text-base">From expensive suits to everyday casuals, we utilize eco-conscious detergents and advanced pressing equipment to preserve fabric longevity.</p>
+            <div class="max-w-2xl mb-14 reveal">
+                <span class="eyebrow">Our Services</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Complete garment care, done properly.</h2>
+                <p class="text-slate-600 mt-4 leading-relaxed">From fine suits and agbada to everyday wear and household linens, we use gentle, eco-conscious products and professional pressing equipment so your clothes last longer.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="card-elevation rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-violetAccent-500/10 border border-violetAccent-500/30 flex items-center justify-center text-violetAccent-400 text-2xl mb-6">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Dry Cleaning</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Specialized deep cleaning for suits, agbada, formal dresses, silk, and wool items. Removes tough oil stains without fiber degradation.</p>
-                    <span class="text-xs font-semibold text-violetAccent-400 flex items-center gap-2">From ₦3,000 / piece <i class="fa-solid fa-angle-right text-xs"></i></span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card card-hover p-7 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Dry Cleaning</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Specialist cleaning for suits, agbada, formal dresses, silk and wool. Lifts oil and stains without damaging fibres.</p>
+                    <p class="text-sm font-bold text-navy-900">From ₦3,000 <span class="font-medium text-slate-500">/ piece</span></p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="card-elevation rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-violetAccent-500/10 border border-violetAccent-500/30 flex items-center justify-center text-violetAccent-400 text-2xl mb-6">
-                        <i class="fa-solid fa-soap"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Express Wash & Fold</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Quick wash, tumble dry, and neatly folded everyday apparel. Perfect for busy professionals and families needing quick turnarounds.</p>
-                    <span class="text-xs font-semibold text-violetAccent-400 flex items-center gap-2">From ₦1,500 / bag <i class="fa-solid fa-angle-right text-xs"></i></span>
+                <div class="card card-hover p-7 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-soap"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Express Wash & Fold</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Washed, dried and neatly folded everyday clothing. Ideal for busy professionals and families.</p>
+                    <p class="text-sm font-bold text-navy-900">From ₦1,500 <span class="font-medium text-slate-500">/ bag</span></p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="card-elevation rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-violetAccent-500/10 border border-violetAccent-500/30 flex items-center justify-center text-violetAccent-400 text-2xl mb-6">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Stain Removal Treatment</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Targeted spot treatment for stubborn grease, wine, ink, and sweat marks using fabric-safe enzyme treatments.</p>
-                    <span class="text-xs font-semibold text-violetAccent-400 flex items-center gap-2">Custom Assessment <i class="fa-solid fa-angle-right text-xs"></i></span>
+                <div class="card card-hover p-7 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Stain Removal</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Targeted treatment for grease, wine, ink and sweat marks using fabric-safe enzyme solutions.</p>
+                    <p class="text-sm font-bold text-navy-900">Priced on assessment</p>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="card-elevation rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-violetAccent-500/10 border border-violetAccent-500/30 flex items-center justify-center text-violetAccent-400 text-2xl mb-6">
-                        <i class="fa-solid fa-bed"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Household Linens & Bedding</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Thorough sanitation and washing of heavy duvet covers, bed sheets, curtains, table runners, and bath towels.</p>
-                    <span class="text-xs font-semibold text-violetAccent-400 flex items-center gap-2">From ₦2,500 / item <i class="fa-solid fa-angle-right text-xs"></i></span>
+                <div class="card card-hover p-7 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-bed"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Linens & Bedding</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Deep washing for duvets, bedsheets, curtains, table linen and towels.</p>
+                    <p class="text-sm font-bold text-navy-900">From ₦2,500 <span class="font-medium text-slate-500">/ item</span></p>
                 </div>
 
-                <!-- Service 5 -->
-                <div class="card-elevation rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-violetAccent-500/10 border border-violetAccent-500/30 flex items-center justify-center text-violetAccent-400 text-2xl mb-6">
-                        <i class="fa-solid fa-temperature-arrow-up"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Ironing & Steam Pressing</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Crisp, wrinkle-free steam pressing for shirts, trousers, and traditional attire. Ready to wear on custom hangers.</p>
-                    <span class="text-xs font-semibold text-violetAccent-400 flex items-center gap-2">From ₦800 / piece <i class="fa-solid fa-angle-right text-xs"></i></span>
+                <div class="card card-hover p-7 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Ironing & Steam Pressing</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Crisp, wrinkle-free pressing for shirts, trousers and traditional attire, returned on hangers.</p>
+                    <p class="text-sm font-bold text-navy-900">From ₦800 <span class="font-medium text-slate-500">/ piece</span></p>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="card-elevation rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 border-violetAccent-500/30">
-                    <div class="w-14 h-14 rounded-2xl bg-violetAccent-600 text-white flex items-center justify-center text-2xl mb-6 shadow-md glow-purple-sm">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Same-Day Pickup & Delivery</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Doorstep pickup from Golf Town, Kingstown Estate, and surrounding Lifecamp residences with scheduled drop-off.</p>
-                    <span class="text-xs font-semibold text-violetAccent-400 flex items-center gap-2">Lifecamp Express <i class="fa-solid fa-angle-right text-xs"></i></span>
+                <div class="p-7 rounded-[1.25rem] bg-navy-900 text-white shadow-lift reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-400 text-navy-950 flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3 class="text-lg font-bold mb-2">Pickup & Delivery</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">We collect from your door in Golf Town, Kingstown Estate and across Lifecamp, then bring it back fresh.</p>
+                    <a href="#request-pickup" class="text-sm font-bold text-brand-400 hover:text-brand-200">Schedule a pickup <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Price Estimator Widget Section -->
-    <section id="calculator" class="py-20 relative">
+    <!-- Price Estimator -->
+    <section id="calculator" class="py-20 md:py-28 bg-white border-y border-slate-200/80 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-violetAccent-400">Interactive Estimator</h2>
-                <p class="text-3xl sm:text-4xl font-extrabold text-white">Instant Price Estimator</p>
-                <p class="text-gray-400 text-sm">Select items below to calculate an estimated total for your laundry order.</p>
+            <div class="max-w-2xl mb-14 reveal">
+                <span class="eyebrow">Pricing</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Estimate your order in seconds.</h2>
+                <p class="text-slate-600 mt-4">Add your items to see an estimated total, then book with one tap.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- Selector List -->
-                <div class="lg:col-span-7 space-y-4">
-                    <div class="card-elevation rounded-2xl p-6">
-                        <h3 class="text-lg font-bold text-white mb-4 border-b border-gray-800 pb-3 flex justify-between items-center">
-                            <span>Garments & Apparel</span>
-                            <span class="text-xs text-violetAccent-400 font-normal">Dry Clean / Wash & Press</span>
-                        </h3>
-                        
-                        <div class="space-y-4">
-                            <!-- Item row 1 -->
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/80 border border-gray-800">
-                                <div>
-                                    <p class="font-medium text-white text-sm">Men's Suit (2-Piece)</p>
-                                    <p class="text-xs text-gray-400">₦3,500 each</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <button onclick="updateQty('suit', -1)" class="w-8 h-8 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 flex items-center justify-center font-bold text-sm">-</button>
-                                    <span id="qty-suit" class="w-6 text-center text-sm font-semibold text-white">0</span>
-                                    <button onclick="updateQty('suit', 1)" class="w-8 h-8 rounded-lg bg-violetAccent-600 text-white hover:bg-violetAccent-500 flex items-center justify-center font-bold text-sm">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Item row 2 -->
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/80 border border-gray-800">
-                                <div>
-                                    <p class="font-medium text-white text-sm">Shirts / Blouses</p>
-                                    <p class="text-xs text-gray-400">₦1,200 each</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <button onclick="updateQty('shirt', -1)" class="w-8 h-8 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 flex items-center justify-center font-bold text-sm">-</button>
-                                    <span id="qty-shirt" class="w-6 text-center text-sm font-semibold text-white">0</span>
-                                    <button onclick="updateQty('shirt', 1)" class="w-8 h-8 rounded-lg bg-violetAccent-600 text-white hover:bg-violetAccent-500 flex items-center justify-center font-bold text-sm">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Item row 3 -->
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/80 border border-gray-800">
-                                <div>
-                                    <p class="font-medium text-white text-sm">Traditional Wear / Agbada</p>
-                                    <p class="text-xs text-gray-400">₦4,000 per set</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <button onclick="updateQty('agbada', -1)" class="w-8 h-8 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 flex items-center justify-center font-bold text-sm">-</button>
-                                    <span id="qty-agbada" class="w-6 text-center text-sm font-semibold text-white">0</span>
-                                    <button onclick="updateQty('agbada', 1)" class="w-8 h-8 rounded-lg bg-violetAccent-600 text-white hover:bg-violetAccent-500 flex items-center justify-center font-bold text-sm">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Item row 4 -->
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/80 border border-gray-800">
-                                <div>
-                                    <p class="font-medium text-white text-sm">Duvet / Heavy Blanket</p>
-                                    <p class="text-xs text-gray-400">₦4,500 each</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <button onclick="updateQty('duvet', -1)" class="w-8 h-8 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 flex items-center justify-center font-bold text-sm">-</button>
-                                    <span id="qty-duvet" class="w-6 text-center text-sm font-semibold text-white">0</span>
-                                    <button onclick="updateQty('duvet', 1)" class="w-8 h-8 rounded-lg bg-violetAccent-600 text-white hover:bg-violetAccent-500 flex items-center justify-center font-bold text-sm">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Item row 5 -->
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-graphite-900/80 border border-gray-800">
-                                <div>
-                                    <p class="font-medium text-white text-sm">Trousers / Jeans</p>
-                                    <p class="text-xs text-gray-400">₦1,500 each</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <button onclick="updateQty('trouser', -1)" class="w-8 h-8 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 flex items-center justify-center font-bold text-sm">-</button>
-                                    <span id="qty-trouser" class="w-6 text-center text-sm font-semibold text-white">0</span>
-                                    <button onclick="updateQty('trouser', 1)" class="w-8 h-8 rounded-lg bg-violetAccent-600 text-white hover:bg-violetAccent-500 flex items-center justify-center font-bold text-sm">+</button>
-                                </div>
-                            </div>
-                        </div>
+                <div class="lg:col-span-7 card p-6 sm:p-7">
+                    <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-100">
+                        <h3 class="text-lg font-bold">Garments & Items</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full">Dry clean / Wash & press</span>
                     </div>
+                    <div id="itemList" class="divide-y divide-slate-100"></div>
                 </div>
 
-                <!-- Summary Box -->
-                <div class="lg:col-span-5">
-                    <div class="card-elevation rounded-2xl p-6 sticky top-28 space-y-6">
-                        <h3 class="text-lg font-bold text-white border-b border-gray-800 pb-3">Order Estimation Summary</h3>
-                        
+                <div class="lg:col-span-5 lg:sticky lg:top-28">
+                    <div class="card p-6 sm:p-7 space-y-5">
+                        <h3 class="text-lg font-bold">Order Summary</h3>
+
                         <div id="cartItemsList" class="space-y-2 text-sm max-h-48 overflow-y-auto">
-                            <p class="text-gray-400 text-xs italic">No items selected yet. Add items above to calculate.</p>
+                            <p class="text-slate-400 text-sm">No items yet. Add items to see your estimate.</p>
                         </div>
 
-                        <!-- Express Mode Checkbox -->
-                        <div class="pt-4 border-t border-gray-800">
-                            <label class="flex items-center gap-3 cursor-pointer">
-                                <input type="checkbox" id="expressCheck" onchange="calculateTotal()" class="w-4 h-4 rounded text-violetAccent-600 bg-gray-800 border-gray-700 focus:ring-violetAccent-500">
-                                <span class="text-sm font-medium text-white">Express Same-Day Processing (+30%)</span>
-                            </label>
-                        </div>
+                        <label class="flex items-center justify-between gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer">
+                            <span>
+                                <span class="block text-sm font-semibold">Express same‑day</span>
+                                <span class="block text-xs text-slate-500">+30% on items</span>
+                            </span>
+                            <input type="checkbox" id="expressCheck" class="w-5 h-5 rounded accent-[#0891A6]">
+                        </label>
 
-                        <div class="pt-4 border-t border-gray-800 space-y-2">
-                            <div class="flex justify-between text-sm text-gray-400">
-                                <span>Subtotal</span>
-                                <span id="subtotalVal">₦0</span>
-                            </div>
-                            <div class="flex justify-between text-sm text-gray-400">
-                                <span>Lifecamp Pickup Fee</span>
-                                <span id="deliveryFeeVal">₦1,000</span>
-                            </div>
-                            <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-gray-800">
-                                <span>Estimated Total</span>
-                                <span id="totalVal" class="text-violetAccent-400">₦1,000</span>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between text-slate-600"><span>Subtotal</span><span id="subtotalVal">₦0</span></div>
+                            <div class="flex justify-between text-slate-600"><span>Lifecamp pickup fee</span><span>₦1,000</span></div>
+                            <div class="flex justify-between items-baseline pt-3 border-t border-slate-100">
+                                <span class="font-bold">Estimated total</span>
+                                <span id="totalVal" class="text-2xl font-extrabold text-navy-900">₦1,000</span>
                             </div>
                         </div>
 
-                        <button onclick="transferToBooking()" class="w-full py-3.5 rounded-xl text-white bg-violetAccent-600 hover:bg-violetAccent-500 font-bold text-sm shadow-md transition-all">
-                            Proceed to Book with Estimate
+                        <button id="transferBtn" class="w-full py-3.5 rounded-xl text-white bg-navy-900 hover:bg-navy-700 font-bold text-sm transition-colors">
+                            Book with this estimate <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
                         </button>
+                        <p class="text-[11px] text-slate-400 text-center">Final price confirmed after inspection.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-graphite-900/50 border-t border-gray-800/60">
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 md:py-28 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-violetAccent-400">Simple Process</h2>
-                <p class="text-3xl sm:text-4xl font-extrabold text-white">How GJS Laundry Works</p>
-                <p class="text-gray-400 text-sm">Getting your clothes professionally cleaned has never been easier.</p>
+            <div class="max-w-2xl mx-auto text-center mb-14 reveal">
+                <span class="eyebrow">How It Works</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Four simple steps to fresh clothes.</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                <!-- Step 1 -->
-                <div class="card-elevation rounded-2xl p-6 text-center relative z-10">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-violetAccent-600 text-white font-bold flex items-center justify-center text-lg mb-4 glow-purple-sm">
-                        1
-                    </div>
-                    <h4 class="font-bold text-white text-lg mb-2">Book or Drop Off</h4>
-                    <p class="text-xs text-gray-400">Schedule online for pickup or visit our Golf Town corner shop in Kingstown Estate.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-7 reveal">
+                    <span class="text-sm font-extrabold text-brand-600">01</span>
+                    <h4 class="font-bold text-lg mt-3 mb-2">Book or drop off</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Book a pickup online, call us, or visit our shop at Golf Town Corner Shop.</p>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="card-elevation rounded-2xl p-6 text-center relative z-10">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-violetAccent-600 text-white font-bold flex items-center justify-center text-lg mb-4 glow-purple-sm">
-                        2
-                    </div>
-                    <h4 class="font-bold text-white text-lg mb-2">Tag & Inspect</h4>
-                    <p class="text-xs text-gray-400">Every garment is tagged, inspected for stains, and paired with custom wash cycles.</p>
+                <div class="card p-7 reveal">
+                    <span class="text-sm font-extrabold text-brand-600">02</span>
+                    <h4 class="font-bold text-lg mt-3 mb-2">Tag & inspect</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Every garment is tagged, checked for stains and matched to the right care.</p>
                 </div>
-
-                <!-- Step 3 -->
-                <div class="card-elevation rounded-2xl p-6 text-center relative z-10">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-violetAccent-600 text-white font-bold flex items-center justify-center text-lg mb-4 glow-purple-sm">
-                        3
-                    </div>
-                    <h4 class="font-bold text-white text-lg mb-2">Clean & Steam Press</h4>
-                    <p class="text-xs text-gray-400">Eco-friendly solvent cleaning, hand treatment, and crisp industrial steam pressing.</p>
+                <div class="card p-7 reveal">
+                    <span class="text-sm font-extrabold text-brand-600">03</span>
+                    <h4 class="font-bold text-lg mt-3 mb-2">Clean & press</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Gentle cleaning, hand treatment where needed and crisp steam pressing.</p>
                 </div>
-
-                <!-- Step 4 -->
-                <div class="card-elevation rounded-2xl p-6 text-center relative z-10">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-violetAccent-600 text-white font-bold flex items-center justify-center text-lg mb-4 glow-purple-sm">
-                        4
-                    </div>
-                    <h4 class="font-bold text-white text-lg mb-2">Fresh Delivery</h4>
-                    <p class="text-xs text-gray-400">Packaged neatly on hangers or folded bags delivered straight back to your home.</p>
+                <div class="card p-7 reveal">
+                    <span class="text-sm font-extrabold text-brand-600">04</span>
+                    <h4 class="font-bold text-lg mt-3 mb-2">Fresh delivery</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Returned on hangers or neatly folded, straight to your door.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Neighborhood Location Section -->
-    <section id="location" class="py-20 relative">
+    <!-- Contact & Location -->
+    <section id="contact" class="py-20 md:py-28 bg-white border-y border-slate-200/80 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Location Details -->
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violetAccent-500/10 text-violetAccent-400 text-xs font-semibold">
-                        <i class="fa-solid fa-location-dot"></i> Neighborhood Hub
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-5 space-y-6 reveal">
+                    <span class="eyebrow">Contact & Location</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Visit, call or message us.</h2>
+                    <p class="text-slate-600 leading-relaxed">We serve Kingstown Estate, Golf Town and the wider Lifecamp area in Abuja. Drop off on your way to work and pick up fresh.</p>
+
+                    <div class="space-y-3">
+                        <a href="tel:+2349133275551" class="flex items-center gap-4 p-4 rounded-2xl border border-slate-200 hover:border-brand-400 hover:bg-brand-50/40 transition-colors group">
+                            <div class="w-11 h-11 rounded-xl bg-navy-900 text-white flex items-center justify-center shrink-0"><i class="fa-solid fa-phone"></i></div>
+                            <div class="min-w-0">
+                                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Phone</p>
+                                <p class="font-bold text-navy-900 group-hover:text-brand-700">0913 327 5551</p>
+                            </div>
+                        </a>
+                        <a href="mailto:goodnessomone2@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl border border-slate-200 hover:border-brand-400 hover:bg-brand-50/40 transition-colors group">
+                            <div class="w-11 h-11 rounded-xl bg-navy-900 text-white flex items-center justify-center shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="min-w-0">
+                                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Email</p>
+                                <p class="font-bold text-navy-900 group-hover:text-brand-700 break-all">goodnessomone2@gmail.com</p>
+                            </div>
+                        </a>
+                        <div class="flex items-center gap-4 p-4 rounded-2xl border border-slate-200">
+                            <div class="w-11 h-11 rounded-xl bg-navy-900 text-white flex items-center justify-center shrink-0"><i class="fa-regular fa-clock"></i></div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Opening Hours</p>
+                                <p class="font-bold text-navy-900">Mon – Sat · 8:00 AM – 6:30 PM</p>
+                                <p class="text-xs text-slate-500">Sunday: Closed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-2xl border border-slate-200">
+                            <div class="w-11 h-11 rounded-xl bg-navy-900 text-white flex items-center justify-center shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Address</p>
+                                <p class="font-bold text-navy-900">Golf Town Corner Shop, Kingstown Estate, Lifecamp, Abuja</p>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Visit Our Lifecamp Outlet</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Conveniently located for residents of Kingstown Estate, Golf Town, and the wider Lifecamp district in Abuja. Drop off your clothing on your morning commute!
-                    </p>
 
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4 p-4 rounded-xl bg-graphite-900 border border-gray-800">
-                            <div class="w-10 h-10 rounded-lg bg-violetAccent-500/20 text-violetAccent-400 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-store"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Physical Address</h4>
-                                <p class="text-xs text-gray-300 mt-0.5">Golf Town Corner Shop, Kingstown Estate, Lifecamp, Abuja</p>
-                            </div>
-                        </div>
+                    <a href="https://wa.me/2349133275551?text=Hello%20GJS%20Laundry%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white bg-[#25D366] hover:bg-[#1EBE5B] font-bold text-sm transition-colors">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp
+                    </a>
+                </div>
 
-                        <div class="flex items-start gap-4 p-4 rounded-xl bg-graphite-900 border border-gray-800">
-                            <div class="w-10 h-10 rounded-lg bg-violetAccent-500/20 text-violetAccent-400 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Operating Hours</h4>
-                                <p class="text-xs text-gray-300 mt-0.5">Monday – Saturday: 7:30 AM – 7:00 PM</p>
-                                <p class="text-xs text-gray-400">Sunday: Closed for Pickups</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-xl bg-graphite-900 border border-gray-800">
-                            <div class="w-10 h-10 rounded-lg bg-violetAccent-500/20 text-violetAccent-400 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Direct Contact</h4>
-                                <p class="text-xs text-gray-300 mt-0.5">+234 (0) 800 GJS LAUNDRY</p>
-                                <p class="text-xs text-gray-400">support@gjsdrycleaning.com</p>
-                            </div>
+                <div class="lg:col-span-7 reveal">
+                    <div class="card overflow-hidden">
+                        <iframe
+                            title="Map showing Kingstown Estate, Lifecamp, Abuja"
+                            src="https://maps.google.com/maps?q=Kingstown%20Estate%2C%20Life%20Camp%2C%20Abuja&z=15&output=embed"
+                            class="w-full h-80 sm:h-[26rem] border-0"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="p-4 flex items-center justify-between text-sm">
+                            <span class="text-slate-600"><i class="fa-solid fa-circle-info text-brand-600 mr-1"></i> Near Kingstown main gate</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kingstown+Estate+Life+Camp+Abuja" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Get directions <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Visual Location Map Mockup -->
-                <div class="lg:col-span-6">
-                    <div class="card-elevation rounded-2xl p-6 relative overflow-hidden border border-gray-800">
-                        <div class="w-full h-80 rounded-xl bg-graphite-900 relative flex items-center justify-center overflow-hidden border border-gray-800">
-                            <!-- Simulated Map Graphic -->
-                            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#8B5CF6_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                            
-                            <!-- Stylized Roads Mockup -->
-                            <div class="absolute w-full h-2 bg-gray-800 rotate-12 top-1/2"></div>
-                            <div class="absolute h-full w-2 bg-gray-800 -rotate-45 left-1/3"></div>
-
-                            <!-- Pin Badge -->
-                            <div class="relative z-10 text-center animate-bounce">
-                                <div class="w-12 h-12 mx-auto rounded-full bg-violetAccent-600 text-white flex items-center justify-center text-xl shadow-lg glow-purple">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="mt-2 px-3 py-1 rounded-lg bg-graphite-900 border border-violetAccent-500/40 text-xs font-bold text-white shadow-xl">
-                                    GJS Dry Cleaning Outlet
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 flex items-center justify-between text-xs text-gray-400">
-                            <span><i class="fa-solid fa-circle-info text-violetAccent-400 mr-1"></i> Located near Kingstown Main Gate</span>
-                            <a href="https://maps.google.com" target="_blank" class="text-violetAccent-400 font-semibold hover:underline">Open Map <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Pickup & Delivery Request Form Section -->
-    <section id="request-pickup" class="py-20 bg-graphite-900/50 border-t border-gray-800/60 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-violetAccent-400">Schedule Doorstep Care</h2>
-                <p class="text-3xl font-extrabold text-white">Book Your Pickup Request</p>
-                <p class="text-gray-400 text-sm">Fill in your details below and our dispatch courier will confirm your pickup time slot.</p>
+    <!-- Booking Form -->
+    <section id="request-pickup" class="py-20 md:py-28 scroll-mt-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span class="eyebrow">Book a Pickup</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Schedule doorstep collection.</h2>
+                <p class="text-slate-600 mt-4">Fill in your details and send. Your request comes straight to us on WhatsApp and we'll confirm your pickup time.</p>
             </div>
 
-            <div class="card-elevation rounded-2xl p-6 sm:p-10 border border-gray-800">
-                <form id="pickupForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Full Name -->
+            <div class="card p-6 sm:p-10">
+                <form id="pickupForm" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Full Name *</label>
-                            <input type="text" required placeholder="e.g. Chinedu Okafor" class="w-full px-4 py-3 rounded-xl bg-graphite-900 border border-gray-800 text-white text-sm focus:outline-none focus:border-violetAccent-500 transition-colors">
+                            <label for="formName" class="block text-sm font-semibold mb-2">Full name *</label>
+                            <input id="formName" type="text" required placeholder="e.g. Chinedu Okafor" class="field">
                         </div>
-
-                        <!-- Phone Number -->
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Phone Number *</label>
-                            <input type="tel" required placeholder="e.g. 0801 234 5678" class="w-full px-4 py-3 rounded-xl bg-graphite-900 border border-gray-800 text-white text-sm focus:outline-none focus:border-violetAccent-500 transition-colors">
+                            <label for="formPhone" class="block text-sm font-semibold mb-2">Phone number *</label>
+                            <input id="formPhone" type="tel" required placeholder="e.g. 0801 234 5678" class="field">
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Preferred Service -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Service Type</label>
-                            <select class="w-full px-4 py-3 rounded-xl bg-graphite-900 border border-gray-800 text-white text-sm focus:outline-none focus:border-violetAccent-500 transition-colors">
+                            <label for="formService" class="block text-sm font-semibold mb-2">Service</label>
+                            <select id="formService" class="field">
                                 <option>Dry Cleaning & Steam Pressing</option>
                                 <option>Express Wash & Fold</option>
                                 <option>Household Linens & Duvets</option>
-                                <option>Stain Removal Only</option>
+                                <option>Stain Removal</option>
                             </select>
                         </div>
-
-                        <!-- Preferred Date -->
                         <div>
-                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Pickup Date *</label>
-                            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-graphite-900 border border-gray-800 text-white text-sm focus:outline-none focus:border-violetAccent-500 transition-colors">
+                            <label for="formDate" class="block text-sm font-semibold mb-2">Pickup date *</label>
+                            <input id="formDate" type="date" required class="field">
                         </div>
                     </div>
 
-                    <!-- Pickup Address inside Lifecamp -->
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Street Address (Lifecamp & Environs) *</label>
-                        <input type="text" id="formAddress" required placeholder="e.g. House 14, Kingstown Estate, Lifecamp" class="w-full px-4 py-3 rounded-xl bg-graphite-900 border border-gray-800 text-white text-sm focus:outline-none focus:border-violetAccent-500 transition-colors">
+                        <label for="formAddress" class="block text-sm font-semibold mb-2">Pickup address (Lifecamp & environs) *</label>
+                        <input id="formAddress" type="text" required placeholder="e.g. House 14, Kingstown Estate, Lifecamp" class="field">
                     </div>
 
-                    <!-- Special Notes -->
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Garment Notes / Special Instructions</label>
-                        <textarea id="formNotes" rows="3" placeholder="e.g. Delicate silk blouse requires gentle care, stain on white shirt sleeve..." class="w-full px-4 py-3 rounded-xl bg-graphite-900 border border-gray-800 text-white text-sm focus:outline-none focus:border-violetAccent-500 transition-colors"></textarea>
+                        <label for="formNotes" class="block text-sm font-semibold mb-2">Notes / special instructions</label>
+                        <textarea id="formNotes" rows="3" placeholder="e.g. Silk blouse needs gentle care; stain on white shirt sleeve" class="field"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-xl text-white bg-violetAccent-600 hover:bg-violetAccent-500 font-bold text-base shadow-lg shadow-violetAccent-600/30 transition-all glow-purple-sm">
-                        Submit Pickup Booking <i class="fa-solid fa-paper-plane ml-2 text-sm"></i>
+                    <button type="submit" class="w-full py-4 rounded-xl text-white bg-navy-900 hover:bg-navy-700 font-bold text-base transition-colors shadow-soft">
+                        Send Pickup Request <i class="fa-solid fa-paper-plane ml-2 text-sm"></i>
                     </button>
+                    <p class="text-xs text-slate-500 text-center">Prefer to talk? Call <a href="tel:+2349133275551" class="font-semibold text-brand-700 hover:underline">0913 327 5551</a> or email <a href="mailto:goodnessomone2@gmail.com" class="font-semibold text-brand-700 hover:underline">goodnessomone2@gmail.com</a>.</p>
                 </form>
             </div>
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer class="bg-graphite-900 border-t border-gray-800 text-gray-400 text-sm py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="space-y-4 md:col-span-2">
+    <footer class="bg-navy-950 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
+            <div class="md:col-span-5 space-y-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-violetAccent-600 flex items-center justify-center text-white font-bold text-base">GJS</div>
-                    <span class="text-lg font-bold text-white">Gjs Dry Cleaning & Laundry</span>
+                    <div class="w-10 h-10 rounded-xl bg-brand-400 flex items-center justify-center text-navy-950 font-extrabold text-sm">GJS</div>
+                    <span class="text-lg font-bold text-white">GJS Dry Cleaning & Laundry</span>
                 </div>
-                <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
-                    Providing high-standard dry cleaning, garment maintenance, and laundry pickup services across Lifecamp and neighboring Abuja estates.
-                </p>
-                <p class="text-xs text-gray-500">📍 Golf Town Corner Shop, Kingstown Estate, Lifecamp.</p>
+                <p class="max-w-sm leading-relaxed">Professional dry cleaning, laundry and pickup services for Lifecamp and nearby Abuja estates.</p>
+                <p class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-brand-400 mt-1"></i> Golf Town Corner Shop, Kingstown Estate, Lifecamp, Abuja</p>
             </div>
 
-            <div>
-                <h4 class="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Quick Links</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#services" class="hover:text-violetAccent-400 transition-colors">Our Services</a></li>
-                    <li><a href="#calculator" class="hover:text-violetAccent-400 transition-colors">Price Estimator</a></li>
-                    <li><a href="#how-it-works" class="hover:text-violetAccent-400 transition-colors">How It Works</a></li>
-                    <li><a href="#location" class="hover:text-violetAccent-400 transition-colors">Lifecamp Outlet</a></li>
+            <div class="md:col-span-3">
+                <h4 class="font-semibold text-white mb-4 text-xs uppercase tracking-wider">Explore</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                    <li><a href="#calculator" class="hover:text-white transition-colors">Pricing</a></li>
+                    <li><a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a></li>
+                    <li><a href="#request-pickup" class="hover:text-white transition-colors">Book a Pickup</a></li>
                 </ul>
             </div>
 
-            <div>
-                <h4 class="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Hours & Contact</h4>
-                <p class="text-xs text-gray-400 mb-1">Mon - Sat: 7:30 AM - 7:00 PM</p>
-                <p class="text-xs text-gray-400 mb-3">Sunday: Closed</p>
-                <p class="text-xs font-bold text-violetAccent-400">+234 (0) 800 GJS LAUNDRY</p>
+            <div class="md:col-span-4">
+                <h4 class="font-semibold text-white mb-4 text-xs uppercase tracking-wider">Hours & Contact</h4>
+                <ul class="space-y-2.5">
+                    <li class="flex items-center gap-3"><i class="fa-regular fa-clock text-brand-400 w-4"></i> Mon – Sat · 8:00 AM – 6:30 PM</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-brand-400 w-4"></i> <a href="tel:+2349133275551" class="hover:text-white transition-colors">0913 327 5551</a></li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-brand-400 w-4"></i> <a href="mailto:goodnessomone2@gmail.com" class="hover:text-white transition-colors break-all">goodnessomone2@gmail.com</a></li>
+                    <li class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-brand-400 w-4"></i> <a href="https://wa.me/2349133275551" target="_blank" rel="noopener" class="hover:text-white transition-colors">WhatsApp us</a></li>
+                </ul>
             </div>
         </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-gray-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
-            <p>&copy; 2026 GJS Dry Cleaning & Laundry Service. All rights reserved.</p>
-            <p class="mt-2 sm:mt-0">Golf Town Corner Shop, Kingstown Estate, Lifecamp</p>
+        <div class="border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+                <p>&copy; <span id="year">2026</span> GJS Dry Cleaning & Laundry Service. All rights reserved.</p>
+                <p>Lifecamp, Abuja</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Booking Modal Notification -->
-    <div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="card-elevation rounded-2xl p-6 sm:p-8 max-w-md w-full border border-violetAccent-500/30 text-center space-y-4">
-            <div class="w-16 h-16 rounded-full bg-violetAccent-500/20 text-violetAccent-400 flex items-center justify-center text-3xl mx-auto glow-purple">
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/2349133275551" target="_blank" rel="noopener" aria-label="Chat with GJS Laundry on WhatsApp"
+       class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-lg shadow-black/20 hover:scale-105 transition-transform">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-navy-950/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="bg-white rounded-3xl p-7 sm:p-9 max-w-md w-full text-center space-y-4 shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mx-auto">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
-            <h3 class="text-2xl font-bold text-white">Pickup Scheduled!</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-                Thank you for choosing GJS Dry Cleaning. Our dispatch desk at Golf Town Corner Shop, Kingstown Estate will reach out to confirm your pickup window.
+            <h3 id="modalTitle" class="text-2xl font-extrabold">Request ready!</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                WhatsApp has opened with your booking details. Just tap send and we'll confirm your pickup window. If it didn't open, call us on
+                <a href="tel:+2349133275551" class="font-semibold text-brand-700">0913 327 5551</a>.
             </p>
-            <button onclick="closeModal()" class="w-full py-3 rounded-xl text-white bg-violetAccent-600 hover:bg-violetAccent-500 font-bold text-sm">
-                Close
-            </button>
+            <button id="closeModalBtn" class="w-full py-3.5 rounded-xl text-white bg-navy-900 hover:bg-navy-700 font-bold text-sm">Done</button>
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
     <script>
-        // Item Prices
-        const prices = {
-            suit: 3500,
-            shirt: 1200,
-            agbada: 4000,
-            duvet: 4500,
-            trouser: 1500
-        };
+        const BUSINESS_PHONE = '2349133275551';
 
-        const itemNames = {
-            suit: "Men's Suit (2-pc)",
-            shirt: "Shirts / Blouses",
-            agbada: "Agbada Set",
-            duvet: "Duvet / Heavy Blanket",
-            trouser: "Trousers / Jeans"
-        };
+        // ---- Price estimator ----
+        const items = [
+            { key: 'suit',    name: "Men's Suit (2-piece)",    price: 3500, unit: 'each' },
+            { key: 'shirt',   name: 'Shirts / Blouses',        price: 1200, unit: 'each' },
+            { key: 'agbada',  name: 'Traditional Wear / Agbada', price: 4000, unit: 'per set' },
+            { key: 'duvet',   name: 'Duvet / Heavy Blanket',   price: 4500, unit: 'each' },
+            { key: 'trouser', name: 'Trousers / Jeans',        price: 1500, unit: 'each' },
+        ];
+        const quantities = Object.fromEntries(items.map(i => [i.key, 0]));
+        const naira = n => '₦' + n.toLocaleString('en-NG');
+        const DELIVERY_FEE = 1000;
 
-        const quantities = {
-            suit: 0,
-            shirt: 0,
-            agbada: 0,
-            duvet: 0,
-            trouser: 0
-        };
+        const list = document.getElementById('itemList');
+        list.innerHTML = items.map(i => `
+            <div class="flex items-center justify-between gap-4 py-4">
+                <div>
+                    <p class="font-semibold text-sm">${i.name}</p>
+                    <p class="text-xs text-slate-500 mt-0.5">${naira(i.price)} ${i.unit}</p>
+                </div>
+                <div class="flex items-center gap-1 rounded-xl border border-slate-200 p-1">
+                    <button type="button" data-key="${i.key}" data-delta="-1" aria-label="Remove one ${i.name}" class="w-8 h-8 rounded-lg text-slate-500 hover:bg-slate-100 font-bold">−</button>
+                    <span id="qty-${i.key}" class="w-7 text-center text-sm font-bold">0</span>
+                    <button type="button" data-key="${i.key}" data-delta="1" aria-label="Add one ${i.name}" class="w-8 h-8 rounded-lg bg-navy-900 text-white hover:bg-navy-700 font-bold">+</button>
+                </div>
+            </div>`).join('');
 
-        // Quantity Update Handler
-        function updateQty(item, delta) {
-            quantities[item] = Math.max(0, quantities[item] + delta);
-            document.getElementById(`qty-${item}`).innerText = quantities[item];
+        list.addEventListener('click', e => {
+            const btn = e.target.closest('button[data-key]');
+            if (!btn) return;
+            const k = btn.dataset.key;
+            quantities[k] = Math.max(0, quantities[k] + Number(btn.dataset.delta));
+            document.getElementById('qty-' + k).textContent = quantities[k];
             calculateTotal();
-        }
-
-        // Calculate Pricing Total
-        function calculateTotal() {
-            let subtotal = 0;
-            let summaryHTML = '';
-            let hasItems = false;
-
-            for (const key in quantities) {
-                if (quantities[key] > 0) {
-                    hasItems = true;
-                    const itemTotal = quantities[key] * prices[key];
-                    subtotal += itemTotal;
-                    summaryHTML += `
-                        <div class="flex justify-between items-center text-xs text-gray-300 py-1">
-                            <span>${itemNames[key]} x ${quantities[key]}</span>
-                            <span class="font-semibold text-white">₦${itemTotal.toLocaleString()}</span>
-                        </div>
-                    `;
-                }
-            }
-
-            const cartList = document.getElementById('cartItemsList');
-            if (hasItems) {
-                cartList.innerHTML = summaryHTML;
-            } else {
-                cartList.innerHTML = '<p class="text-gray-400 text-xs italic">No items selected yet. Add items above to calculate.</p>';
-            }
-
-            const isExpress = document.getElementById('expressCheck').checked;
-            const expressMultiplier = isExpress ? 1.3 : 1.0;
-            const finalSubtotal = Math.round(subtotal * expressMultiplier);
-            const deliveryFee = 1000;
-            const total = finalSubtotal > 0 ? finalSubtotal + deliveryFee : deliveryFee;
-
-            document.getElementById('subtotalVal').innerText = `₦${finalSubtotal.toLocaleString()}`;
-            document.getElementById('totalVal').innerText = `₦${total.toLocaleString()}`;
-        }
-
-        // Transfer estimated summary into request notes
-        function transferToBooking() {
-            let noteSummary = "Estimated Order Items: ";
-            let selectedList = [];
-            for (const key in quantities) {
-                if (quantities[key] > 0) {
-                    selectedList.push(`${itemNames[key]} (x${quantities[key]})`);
-                }
-            }
-            if (selectedList.length === 0) {
-                noteSummary += "General Laundry Request";
-            } else {
-                noteSummary += selectedList.join(", ");
-            }
-
-            document.getElementById('formNotes').value = noteSummary;
-            document.getElementById('request-pickup').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Handle Pickup Form Submission
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            document.getElementById('bookingModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('bookingModal').classList.add('hidden');
-            document.getElementById('pickupForm').reset();
-        }
-
-        // Mobile Menu Toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
         });
+        document.getElementById('expressCheck').addEventListener('change', calculateTotal);
+
+        function selectedItems() {
+            return items.filter(i => quantities[i.key] > 0);
+        }
+
+        function calculateTotal() {
+            const chosen = selectedItems();
+            const subtotal = chosen.reduce((s, i) => s + i.price * quantities[i.key], 0);
+            const cart = document.getElementById('cartItemsList');
+            cart.innerHTML = chosen.length
+                ? chosen.map(i => `<div class="flex justify-between text-slate-700"><span>${i.name} × ${quantities[i.key]}</span><span class="font-semibold">${naira(i.price * quantities[i.key])}</span></div>`).join('')
+                : '<p class="text-slate-400 text-sm">No items yet. Add items to see your estimate.</p>';
+
+            const express = document.getElementById('expressCheck').checked;
+            const finalSubtotal = Math.round(subtotal * (express ? 1.3 : 1));
+            document.getElementById('subtotalVal').textContent = naira(finalSubtotal);
+            document.getElementById('totalVal').textContent = naira(finalSubtotal + DELIVERY_FEE);
+        }
+
+        document.getElementById('transferBtn').addEventListener('click', () => {
+            const chosen = selectedItems();
+            const express = document.getElementById('expressCheck').checked;
+            let note = 'Estimated items: ' + (chosen.length
+                ? chosen.map(i => `${i.name} (x${quantities[i.key]})`).join(', ')
+                : 'General laundry request');
+            if (express) note += ' · Express same-day';
+            note += ' · Estimate: ' + document.getElementById('totalVal').textContent;
+            document.getElementById('formNotes').value = note;
+            document.getElementById('request-pickup').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // ---- Booking form -> WhatsApp ----
+        const dateInput = document.getElementById('formDate');
+        dateInput.min = new Date().toISOString().split('T')[0];
+
+        const modal = document.getElementById('bookingModal');
+        document.getElementById('pickupForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const v = id => document.getElementById(id).value.trim();
+            const message = [
+                'Hello GJS Laundry, I would like to book a pickup.',
+                '',
+                'Name: ' + v('formName'),
+                'Phone: ' + v('formPhone'),
+                'Service: ' + v('formService'),
+                'Pickup date: ' + v('formDate'),
+                'Address: ' + v('formAddress'),
+                v('formNotes') ? 'Notes: ' + v('formNotes') : '',
+            ].filter(Boolean).join('\n');
+            window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.getElementById('pickupForm').reset();
+        });
+
+        // ---- Live open / closed status (Abuja time) ----
+        function updateOpenStatus() {
+            const parts = new Intl.DateTimeFormat('en-GB', {
+                timeZone: 'Africa/Lagos', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+            }).formatToParts(new Date());
+            const get = t => parts.find(p => p.type === t).value;
+            const mins = Number(get('hour')) * 60 + Number(get('minute'));
+            const isOpen = get('weekday') !== 'Sun' && mins >= 8 * 60 && mins < 18 * 60 + 30;
+
+            const badge = document.getElementById('openBadge');
+            badge.textContent = isOpen ? 'Open now' : 'Closed now';
+            badge.className = 'px-2.5 py-1 text-xs rounded-full font-semibold border ' +
+                (isOpen ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-600 border-slate-200');
+            document.getElementById('heroStatusDot').className = 'w-2 h-2 rounded-full ' + (isOpen ? 'bg-emerald-400 animate-pulse' : 'bg-slate-400');
+            document.getElementById('heroStatusText').textContent = isOpen
+                ? 'Open now · until 6:30 PM'
+                : 'Closed now · opens 8:00 AM (Mon – Sat)';
+        }
+        updateOpenStatus();
+        setInterval(updateOpenStatus, 60000);
+
+        // ---- Misc ----
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            const open = menu.classList.toggle('hidden') === false;
+            menuBtn.setAttribute('aria-expanded', String(open));
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => header.classList.toggle('shadow-soft', window.scrollY > 8), { passive: true });
+
+        const io = new IntersectionObserver(entries => entries.forEach(en => {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        }), { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
 </body>
 </html>
